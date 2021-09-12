@@ -1,5 +1,18 @@
 <template>
-  <div>
+  <v-container>
+    <h1>Dashboard</h1>
+    <v-row>
+      <v-col cols="12" v-for="item in sales" :key="item" md="3">
+        <div class="shopping-item">
+          <p>{{ item }}</p>
+        </div>
+      </v-col>
+      <!-- <v-col cols="4">
+        <div class="shopping-logo">
+          <h2>Check our items in the left</h2>
+        </div>
+      </v-col> -->
+    </v-row>
     <v-data-table
       :headers="headers"
       :items="desserts"
@@ -7,19 +20,22 @@
       class="elevation-1"
       @click:row="selectRow"
     ></v-data-table>
-    <v-snackbar v-model="snackbar">
+    <v-snackbar v-model="snackbar" :left="$vuetify.breakpoint.lgAndUp">
       You have selectd {{ currentItem }}
       <template v-slot:action="{ attrs }">
         <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">Close</v-btn>
       </template>
     </v-snackbar>
-  </div>
+  </v-container>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      sales: [
+        'Bags', 'Shoes', 'Hats', 'Gloves'
+      ],
       currentItem: "",
       snackbar: false,
       text: `Hello, I'm a snackbar`,
@@ -129,5 +145,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.shopping-item {
+  margin: 2px;
+  background: teal;
+}
+.shopping-logo {
+  margin: 5px;
+  background: orange;
+}
 </style>
