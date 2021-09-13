@@ -2,16 +2,12 @@
   <v-container>
     <h1>Dashboard</h1>
     <v-row>
-      <v-col cols="12" v-for="item in sales" :key="item" md="3">
-        <div class="shopping-item">
-          <p>{{ item }}</p>
-        </div>
+      <v-col cols="12" v-for="item in sales" :key="item.label" md="3">
+        <v-card elevation="9" tile class="shopping-item" color="primary">
+          <v-icon>{{ item.icon }}</v-icon>
+          <v-card-title>{{ item.label }}</v-card-title>
+        </v-card>
       </v-col>
-      <!-- <v-col cols="4">
-        <div class="shopping-logo">
-          <h2>Check our items in the left</h2>
-        </div>
-      </v-col> -->
     </v-row>
     <v-data-table
       :headers="headers"
@@ -34,7 +30,22 @@ export default {
   data() {
     return {
       sales: [
-        'Bags', 'Shoes', 'Hats', 'Gloves'
+        {
+          label: 'Bags',
+          icon: 'mdi-bag-personal-outline',
+        },
+        {
+          label: 'Shoes',
+          icon: 'mdi-shoe-heel'
+        },
+        {
+          label: 'Hats',
+          icon: 'mdi-account-cowboy-hat'
+        },
+        {
+          label: 'Gloves',
+          icon: 'mdi-boxing-glove'
+        }
       ],
       currentItem: "",
       snackbar: false,
@@ -147,11 +158,7 @@ export default {
 
 <style scoped>
 .shopping-item {
+  height: 10rem;
   margin: 2px;
-  background: teal;
-}
-.shopping-logo {
-  margin: 5px;
-  background: orange;
 }
 </style>
