@@ -1,13 +1,15 @@
 <template>
-  <v-vontainer>
-    <v-row class="mx-auto mt-5">
+  <v-card class="mx-auto" width="700px">
+    <v-row class="mx-10 py-5">
       <v-col>
         <h1>Sign up</h1>
         <v-form ref="signUpFrom" v-model="formValidity">
           <v-text-field v-model="email" :rules="emailRules" label="Email" type="email" required></v-text-field>
           <v-autocomplete label="Which browser do you use?" :items="browsers"></v-autocomplete>
           <v-file-input label="Attach profile"></v-file-input>
-          <v-date-picker v-model="birthday"></v-date-picker>
+          <v-row justify="center">
+            <v-date-picker v-model="birthday"></v-date-picker>
+          </v-row>
           <v-text-field label="Birthday" v-model="birthday" readonly></v-text-field>
           <v-checkbox v-model="agreeToTerms" :rules="agreeToTermsRules" label="Agree to terms & conditions"></v-checkbox>
           <v-btn type="submit" color="primary" class="mr-4" :disabled="!formValidity">submit</v-btn>
@@ -17,7 +19,7 @@
         </v-form>
       </v-col>
     </v-row>
-  </v-vontainer>
+  </v-card>
 </template>
 
 <script>
